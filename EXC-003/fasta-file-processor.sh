@@ -12,7 +12,7 @@ if [ "$num_seq" -eq 0 ] || [ -z "$total_length" ] || [ "$total_length" -eq 0 ]; 
 fi
 
 sequences=$(awk '!/^>/{print}' "$1")
-num_seq=$(grep -c '>' $1)
+num_seq=$(grep -c '^>' $1)
 total_length=$(awk '/^>/ {next} {total += length($0)} END {print total}' "$1")
 length=$(awk '/^>/ {next} {print length}' "$1") 
 max_length=$(echo "$length" | sort -nr | head -n1)
